@@ -1,6 +1,5 @@
-from sympy import log, sin, cos, tan, lambdify
+from sympy import log, sin, cos, tan, lambdify, E, pi, sqrt
 from sympy.abc import x
-from math import e, pi
 from bolzano_theorem import BolzanoTheorem
 
 # Variables

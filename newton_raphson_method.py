@@ -1,4 +1,4 @@
-from sympy import log, sin, cos, tan, E, pi, lambdify, diff
+from sympy import log, sin, cos, tan, E, pi, lambdify, diff, sqrt
 from sympy.abc import x
 
 # Variables
