@@ -8,15 +8,15 @@ max_iterations: int
 precision: float
 
 # Get input
-print("== Newton-Raphson Method ==")
+print("== Metodo Newton-Raphson ==")
 print()
-print("For ln(), use log().")
-print("For log, use log(x, base).")
-print("Enter the continuous function:")
+print("Para ln(), use log().")
+print("Para log(), use log(x, base).")
+print("Digite a funcao continua:")
 continuous_function = input("y = ")
-xi = float(input("Enter the initial guess: "))
-max_iterations = int(input("Enter the maximum number of iterations: "))
-precision = float(input("Enter the precision (10e<-x>): "))
+xi = float(input("Digite o valor inicial: "))
+max_iterations = int(input("Digite o numero maximo de iteracoes: "))
+precision = float(input("Digite a precisao (10e<-x>): "))
 
 # Processing and output
 
@@ -46,7 +46,7 @@ for i in range(max_iterations):
     print(f"df(xii) = {round(df_xii, 7)}")
 
     if (f_xi == 0.0) or (abs(f_xi) < precision):
-        print("A root was found!")
-        print(f"Root = {round(xi, 7)}")
+        print("Foi encontrada uma raiz!")
+        print(f"Raiz = {round(xi, 7)}")
         break
     xi = xii

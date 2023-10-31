@@ -12,16 +12,16 @@ precision: float
 bolzano: BolzanoTheorem
 
 # Get input
-print("== False Position Method ==")
+print("== Metodo da Falsa Posicao ==")
 print()
-print("For ln(), use log().")
-print("For log, use log(x, base).")
-print("Enter the continuous function:")
+print("Para ln(), use log().")
+print("Para log(), use log(x, base).")
+print("Digite a funcao continua:")
 continuous_function = input("y = ")
-a = float(input("The beginning of the interval: "))
-b = float(input("The end of the interval: "))
-max_iterations = int(input("Enter the maximum number of iterations: "))
-precision = float(input("Enter the precision (10e<-x>): "))
+a = float(input("Digite o comeco do intervalo: "))
+b = float(input("Digite o fim do intervalo: "))
+max_iterations = int(input("Digite o numero maximo de iteracoes: "))
+precision = float(input("Digite a precisao (10e<-x>): "))
 
 # Processing and output
 bolzano = BolzanoTheorem(continuous_function, str(a), str(b))
@@ -37,10 +37,10 @@ for i in range(max_iterations):
 
     # If a root was found
     if fa == 0.0:
-        print(f"The root is: {a}")
+        print(f"A raiz: {a}")
         break
     if fb == 0.0:
-        print(f"The root is: {b}")
+        print(f"A raiz: {b}")
         break
 
     c = (a * fb - b * fa) / (fb - fa)
@@ -55,7 +55,7 @@ for i in range(max_iterations):
     print()
 
     if (fc == 0) or (abs(fc) < precision):
-        print(f"The root is: {round(c, 7)}")
+        print(f"A raiz: {round(c, 7)}")
         break
 
     if fa * fc >= 0.0:

@@ -9,7 +9,7 @@ class BolzanoTheorem:
         self.end_interval = b
 
     def calc(self) -> bool:
-        print(f"Interval: [{self.begin_interval}, {self.end_interval}]")
+        print(f"Intervalo: [{self.begin_interval}, {self.end_interval}]")
         print()
 
         f = lambdify(x, self.continuous_function)
@@ -19,8 +19,8 @@ class BolzanoTheorem:
         print(f"f({self.begin_interval}) = {fa}")
         print(f"f({self.end_interval}) = {fb}")
         if (fa * fb < 0) or (fa == 0) or (fb == 0):
-            print("There is a zero within this interval")
+            print("Ha raiz nesse intervalo.")
             return True
         else:
-            print("There is not a zero within this interval")
+            print("Nao ha raiz nesse intervalo.")
             return False
