@@ -1,6 +1,6 @@
 from sympy import log, sin, cos, tan, lambdify, E, pi, sqrt
 from sympy.abc import x
-from bolzano_theorem import BolzanoTheorem
+from bolzano_theorem import bolzano_theorem
 
 # Variables
 continuous_function: str
@@ -9,38 +9,33 @@ b: float      # end of the interval
 c: float      # middle of the interval
 max_iterations: int
 precision: float
-bolzano: BolzanoTheorem
 
 # Get input
-print("== Metodo da Falsa Posicao ==")
+print("== False Position Method  ==")
 print()
-print("Para ln(), use log().")
-print("Para log(), use log(x, base).")
-print("Digite a funcao continua:")
+print("To use ln(), type log().")
+print("To use log(), type log(x, base).")
+print("Enter the continuous function:")
 continuous_function = input("y = ")
-a = float(input("Digite o comeco do intervalo: "))
-b = float(input("Digite o fim do intervalo: "))
-max_iterations = int(input("Digite o numero maximo de iteracoes: "))
-precision = float(input("Digite a precisao (10e<-x>): "))
+a = float(input("Enter the beginning of the interval: "))
+b = float(input("Enter the end of the interval: "))
+max_iterations = int(input("Enter maximum iterations number: "))
+precision = float(input("Enter the precision (10e<-x>): "))
 
-# Processing and output
-bolzano = BolzanoTheorem(continuous_function, str(a), str(b))
-
-if not bolzano.calc():  # there is not a zero within the interval
+f = lambdify(x, continuous_function)
+if not bolzano_theorem(f, a, b):
     exit(0)
 
 for i in range(max_iterations):
     print(f"== {i} ==")
-    f = lambdify(x, continuous_function)
     fa = f(a)
     fb = f(b)
 
-    # If a root was found
     if fa == 0.0:
-        print(f"A raiz: {a}")
+        print(f"Root = {a}")
         break
     if fb == 0.0:
-        print(f"A raiz: {b}")
+        print(f"Root = {b}")
         break
 
     c = (a * fb - b * fa) / (fb - fa)
@@ -55,7 +50,7 @@ for i in range(max_iterations):
     print()
 
     if (fc == 0) or (abs(fc) < precision):
-        print(f"A raiz: {round(c, 7)}")
+        print(f"Root = {round(c, 7)}")
         break
 
     if fa * fc >= 0.0:
