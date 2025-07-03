@@ -1,26 +1,22 @@
-from sympy import log, sin, cos, tan, lambdify, E, pi
+from sympy import log, sin, cos, tan, E, pi, FunctionClass, lambdify
 from sympy.abc import x
 
+def bolzano_theorem(cont_func: FunctionClass, begin: float, end: float) -> bool:
+    print(f'Interval [{begin}, {end}]')
+    print()
+    
+    fa = cont_func(begin)
+    fb = cont_func(end)
+    
+    print(f'f({begin}) = {fa}')
+    print(f'f({end}) = {fb}')
+    
+    if (fa * fb < 0) or (fa == 0) or (fb == 0):
+        print("There's a root within the interval.")
+        return True
+    else:
+        print("There's NOT a root within the interval.")
+        return False
 
-class BolzanoTheorem:
-    def __init__(self, cont_func: str, a: str, b: str):
-        self.continuous_function = cont_func
-        self.begin_interval = a
-        self.end_interval = b
-
-    def calc(self) -> bool:
-        print(f"Intervalo: [{self.begin_interval}, {self.end_interval}]")
-        print()
-
-        f = lambdify(x, self.continuous_function)
-        fa = f(float(self.begin_interval))
-        fb = f(float(self.end_interval))
-
-        print(f"f({self.begin_interval}) = {fa}")
-        print(f"f({self.end_interval}) = {fb}")
-        if (fa * fb < 0) or (fa == 0) or (fb == 0):
-            print("Ha raiz nesse intervalo.")
-            return True
-        else:
-            print("Nao ha raiz nesse intervalo.")
-            return False
+if __name__ == '__main__':
+    bolzano_theorem(lambdify(x, '10-x**2'), -2.0, 5.0)
