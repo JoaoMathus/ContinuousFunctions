@@ -8,21 +8,16 @@ max_iterations: int
 precision: float
 
 # Get input
-print("== Metodo Newton-Raphson ==")
+print("== Newton-Raphson Method ==")
 print()
-print("Para ln(), use log().")
-print("Para log(), use log(x, base).")
-print("Digite a funcao continua:")
+print("Enter the continuous function:")
 continuous_function = input("y = ")
-xi = float(input("Digite o valor inicial: "))
-max_iterations = int(input("Digite o numero maximo de iteracoes: "))
-precision = float(input("Digite a precisao (10e<-x>): "))
+xi = float(input("Enter the initial value: "))
+max_iterations = int(input("Max number of iterations: "))
+precision = float(input("Precision (10e<-x>): "))
 
-# Processing and output
-
-# Turning the function from input into a python function
 f = lambdify(x, continuous_function)
-# Calculating the derivative and turning into a python function
+# Calculating the derivative
 df = lambdify(x, eval("diff(continuous_function, x)"))
 
 print(f"f(x)  = {continuous_function}")
@@ -46,7 +41,6 @@ for i in range(max_iterations):
     print(f"df(xii) = {round(df_xii, 7)}")
 
     if (f_xi == 0.0) or (abs(f_xi) < precision):
-        print("Foi encontrada uma raiz!")
         print(f"Raiz = {round(xi, 7)}")
         break
     xi = xii
